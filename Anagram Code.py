@@ -1,5 +1,5 @@
 import random
-
+score = 0
 allCountries = []
 with open('Countries.txt', 'r') as file:
     lines = file.readlines()
@@ -19,8 +19,10 @@ while playing == True:
     guess = input("Your answer - ").upper()
     if guess != currentWord:
         print ("That was incorrect, the answer was -", currentWord)
-        exit()
+        playing = False
     if guess == currentWord:
-        print ("Well done!!!")
-        
+        print ("Well done!!!", len(currentWord), "points!")
+        score += len(currentWord)
 
+print ("---GAME OVER---")
+print ("Your final score was", score)
